@@ -2,8 +2,8 @@
 {
     public class JobSequence
     {
-        List<Job> P1Jobs { get; set; }
-        List<Job> P2Jobs { get; set; }
+        public List<Job> P1Jobs { get; set; }
+        public List<Job> P2Jobs { get; set; }
 
         public JobSequence(List<Job> p1, List<Job> p2)
         {
@@ -27,7 +27,7 @@
                 p1Copy.Add(new Job()
                 {
                     Id = job.Id,
-                    ProcessorId = job.ProcessorId,
+                    //ProcessorId = job.ProcessorId,
                     Cost = job.Cost
                 });
             }
@@ -37,7 +37,7 @@
                 p2Copy.Add(new Job()
                 {
                     Id = job.Id,
-                    ProcessorId = job.ProcessorId,
+                   // ProcessorId = job.ProcessorId,
                     Cost = job.Cost
                 });
             }
