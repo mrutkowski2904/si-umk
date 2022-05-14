@@ -1,4 +1,4 @@
-﻿namespace SimulatedAnnealing.Model
+﻿namespace SimulatedAnnealing.Scheduler
 {
     public class Job
     {

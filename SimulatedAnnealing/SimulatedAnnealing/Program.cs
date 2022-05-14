@@ -1,4 +1,4 @@
-﻿using SimulatedAnnealing.Model;
+﻿using SimulatedAnnealing.Scheduler;
 
 namespace SimulatedAnnealing
 {
@@ -28,7 +28,7 @@ namespace SimulatedAnnealing
             };
             JobSequence sequence = new JobSequence(p1Jobs, p2Jobs);
 
-            Scheduler scheduler = new Scheduler(requirements);
+            JobScheduler scheduler = new(requirements);
             Console.WriteLine($"Cost: {scheduler.RunJobs(sequence)}");
         }
     }

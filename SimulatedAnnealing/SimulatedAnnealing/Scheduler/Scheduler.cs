@@ -1,13 +1,11 @@
-﻿using SimulatedAnnealing.Model;
-
-namespace SimulatedAnnealing
+﻿namespace SimulatedAnnealing.Scheduler
 {
-    public class Scheduler
+    public class JobScheduler
     {
         private readonly int _maxCost = 2000;
         private readonly IList<Requirement> _requirements;
 
-        public Scheduler(IList<Requirement> requirements)
+        public JobScheduler(IList<Requirement> requirements)
         {
             _requirements = requirements;
         }
