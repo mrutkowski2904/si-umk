@@ -4,10 +4,12 @@
     {
         private readonly int _maxCost = 2000;
         private readonly IList<Requirement> _requirements;
+        private readonly bool _draw;
 
-        public JobScheduler(IList<Requirement> requirements)
+        public JobScheduler(IList<Requirement> requirements, bool draw = false)
         {
             _requirements = requirements;
+            _draw = draw;
         }
 
         public int RunJobs(JobSequence jobSequence)
@@ -18,10 +20,20 @@
 
             int sequenceCost = 0;
 
+            if (_draw)
+            {
+                Console.WriteLine("\nTIM  P1   P2");
+            }
+
             while (sequence.P1Jobs.Count > 0 || sequence.P2Jobs.Count > 0)
             {
-                DoUnitOfWork(ref sequence, ref finishedJobs);
                 sequenceCost++;
+                if (_draw)
+                {
+                    Console.Write("{0,-5}", sequenceCost);
+                }
+                DoUnitOfWork(ref sequence, ref finishedJobs);
+
 
                 // Wykrywanie zakleszczeń
                 if (sequenceCost > _maxCost)
@@ -29,7 +41,10 @@
                     HandleDeadlock();
                 }
             }
-
+            if (_draw)
+            {
+                Console.WriteLine();
+            }
 
             return sequenceCost;
         }
@@ -50,6 +65,17 @@
                 if (AreRequirementsMet(p1Job, finishedJobs))
                 {
                     p1Job.Cost--;
+                    if (_draw)
+                    {
+                        Console.Write("{0,-5}", p1Job.Id);
+                    }
+                }
+                else
+                {
+                    if (_draw)
+                    {
+                        Console.Write("{0,-5}", "W");
+                    }
                 }
             }
 
@@ -60,7 +86,23 @@
                 if (AreRequirementsMet(p2Job, finishedJobs))
                 {
                     p2Job.Cost--;
+                    if (_draw)
+                    {
+                        Console.Write("{0,-5}", p2Job.Id);
+                    }
                 }
+                else
+                {
+                    if (_draw)
+                    {
+                        Console.Write("{0,-5}", "W");
+                    }
+                }
+            }
+
+            if (_draw)
+            {
+                Console.WriteLine();
             }
 
             // Zadanie ukończone -> przeniesienie do ukończonych

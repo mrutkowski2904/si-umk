@@ -37,13 +37,22 @@
                 p2Copy.Add(new Job()
                 {
                     Id = job.Id,
-                   // ProcessorId = job.ProcessorId,
+                    // ProcessorId = job.ProcessorId,
                     Cost = job.Cost
                 });
             }
 
             JobSequence clone = new JobSequence(p1Copy, p2Copy);
             return clone;
+        }
+
+        public int GetJobIndex(int jobId)
+        {
+            var p1Index = P1Jobs.FindIndex(j => j.Id == jobId);
+            if (p1Index == -1)
+                return P2Jobs.FindIndex(j => j.Id == jobId);
+
+            return p1Index;
         }
     }
 }
