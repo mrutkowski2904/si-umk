@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "GAF/2.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/GAF.Core.20.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/GAF.Core.20.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GAF/2.3.1": {
+      "sha512": "xDJ8R15i52pQfyTyAHaRnY/tn0k2TKldM4ORLqJhiu0RWAuLFsaGsQKy0TpZXB+IHhuoTDgO6B7Q/3KoGSagvg==",
+      "type": "package",
+      "path": "gaf/2.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gaf.2.3.1.nupkg.sha512",
+        "gaf.nuspec",
+        "lib/net40/GAF.dll",
+        "lib/net40/GAF.xml",
+        "lib/net45/GAF.dll",
+        "lib/net451/GAF.451.dll",
+        "lib/net452/GAF.452.dll",
+        "lib/net46/GAF.46.dll",
+        "lib/net461/GAF.461.dll",
+        "lib/net462/GAF.462.dll",
+        "lib/net47/GAF.47.dll",
+        "lib/netcoreapp2.0/GAF.Core.20.dll",
+        "lib/portable45-net45+win8+wp8/GAF.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "GAF >= 2.3.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Maciej\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\programming\\repo\\si-umk\\GeneticAlgorithm\\GeneticAlgorithm\\GA-SI.csproj",
+      "projectName": "GA-SI",
+      "projectPath": "C:\\programming\\repo\\si-umk\\GeneticAlgorithm\\GeneticAlgorithm\\GA-SI.csproj",
+      "packagesPath": "C:\\Users\\Maciej\\.nuget\\packages\\",
+      "outputPath": "C:\\programming\\repo\\si-umk\\GeneticAlgorithm\\GeneticAlgorithm\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Maciej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "GAF": {
+            "target": "Package",
+            "version": "[2.3.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

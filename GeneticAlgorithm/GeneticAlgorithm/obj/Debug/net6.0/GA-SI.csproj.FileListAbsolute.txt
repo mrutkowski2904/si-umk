@@ -1,0 +1,17 @@
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GA-SI.exe
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GA-SI.deps.json
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GA-SI.runtimeconfig.json
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GA-SI.dll
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GA-SI.pdb
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\net6.0\GAF.Core.20.dll
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.csproj.AssemblyReference.cache
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.GeneratedMSBuildEditorConfig.editorconfig
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.AssemblyInfoInputs.cache
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.AssemblyInfo.cs
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.csproj.CoreCompileInputs.cache
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.csproj.CopyComplete
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.dll
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\refint\GA-SI.dll
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.pdb
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\GA-SI.genruntimeconfig.cache
+C:\programming\repo\si-umk\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\net6.0\ref\GA-SI.dll
