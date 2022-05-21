@@ -55,21 +55,10 @@ namespace GA_SI
 
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello world");
-
-            // Bity 0-liczbaZad - który procesor
-            // DalszeBity - seed dla shuffle list (+1 do momentu aż dobra kombinacja)
-
-            // sposób inny - spróbować fitness 0 dla tych co sa nielegalne
-
-            // zamiast seed - każde zadanie ma 3-4 bity w chromosomie które opisują pozycje na której się znajduje
-
-
             const double crossoverProbability = 0.85;
             const double mutationProbability = 0.08;
             const int elitismPercentage = 15;
 
-            #region STARE
             /*
              * Budowa chromosomu:
              * N pierwszych bitów (gdzie N to liczba zadań) - wybór procesora dla zadania n
@@ -78,11 +67,7 @@ namespace GA_SI
              */
 
             var population = new Population(10, CostManager.JobCount + (32 - CostManager.JobCount), false, false);
-            #endregion
 
-            //var population = new Population(10, CostManager.JobCount * (1 + 4), false, false);
-
-            //create the genetic operators 
             var elite = new Elite(elitismPercentage);
 
             var crossover = new Crossover(crossoverProbability, true)
@@ -92,18 +77,14 @@ namespace GA_SI
 
             var mutation = new BinaryMutate(mutationProbability, true);
 
-            //create the GA itself 
             var ga = new GeneticAlgorithm(population, EvaluateFitness);
 
-            //subscribe to the GAs Generation Complete event 
             ga.OnGenerationComplete += ga_OnGenerationComplete;
 
-            //add the operators to the ga process pipeline 
             ga.Operators.Add(elite);
             ga.Operators.Add(crossover);
             ga.Operators.Add(mutation);
 
-            //run the GA 
             ga.Run(TerminateAlgorithm);
         }
 
@@ -113,204 +94,6 @@ namespace GA_SI
 
             if (chromosome != null)
             {
-                //UInt32 binChromosome = Convert.ToUInt32(chromosome.ToBinaryString());
-
-                #region nowe
-                /*
-                Stack<char> binChars = new Stack<char>(chromosome.ToBinaryString());
-
-                List<Job> p1Jobs = new List<Job>();
-                List<Job> p2Jobs = new List<Job>();
-
-                List<(int, int)> jobIdPos = new List<(int, int)>();
-
-                int i = 0;
-                while (binChars.Count > 0)
-                {
-                    int proc = binChars.Pop() == '1' ? 1 : 0;
-                    int pos;
-
-                    string positionString = "";
-
-                    for (int j = 0; j < 4; j++)
-                    {
-                        positionString += binChars.Pop();
-                    }
-                    pos = Convert.ToInt32(positionString);
-
-                    jobIdPos.Add((i + 1, pos));
-
-                    if (proc == 1)
-                    {
-                        var cost = CostManager.GetCost(i + 1, 1);
-                        if (cost != 0)
-                        {
-                            p1Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = cost
-                            });
-                        }
-                        else
-                        {
-                            p2Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = CostManager.GetCost(i + 1, 2)
-                            });
-                        }
-                    }
-                    else
-                    {
-                        var cost = CostManager.GetCost(i + 1, 2);
-                        if (cost != 0)
-                        {
-                            p2Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = cost
-                            });
-                        }
-                        else
-                        {
-                            p1Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = CostManager.GetCost(i + 1, 1)
-                            });
-                        }
-                    }
-                    i++;
-                }
-                */
-                #endregion
-
-
-                #region STARE
-
-                /*
-                UInt32 processorsBin = Convert.ToUInt32(chromosome.ToBinaryString(0, CostManager.JobCount));
-                var seedBinaryString = chromosome.ToBinaryString(CostManager.JobCount, (32 - CostManager.JobCount));
-
-                int shuffleSeed = 0;
-                for (int i = 0; i < seedBinaryString.Length; i++)
-                {
-                    shuffleSeed += (int)System.Math.Pow(2, i) + Convert.ToInt32(seedBinaryString[i]);
-                }
-
-                List<Job> p1Jobs = new List<Job>();
-                List<Job> p2Jobs = new List<Job>();
-
-                int sequenceCost = 0;
-
-                for (int i = 0; i < CostManager.JobCount; i++)
-                {
-                    // pobranie 1 bitu na pozycji i
-                    var currentJobProcessor = (processorsBin >> i) & 0x00000001;
-
-                    if (currentJobProcessor == 1)
-                    {
-                        var cost = CostManager.GetCost(i + 1, 1);
-                        if (cost != 0)
-                        {
-                            p1Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = cost
-                            });
-                        }
-                        else
-                        {
-                            p2Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = CostManager.GetCost(i + 1, 2)
-                            });
-                        }
-                    }
-                    else
-                    {
-                        var cost = CostManager.GetCost(i + 1, 2);
-                        if (cost != 0)
-                        {
-                            p2Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = cost
-                            });
-                        }
-                        else
-                        {
-                            p1Jobs.Add(new Job()
-                            {
-                                Id = i + 1,
-                                Cost = CostManager.GetCost(i + 1, 1)
-                            });
-                        }
-                    }
-                }
-
-                Shuffle<Job>(p1Jobs, shuffleSeed);
-                Shuffle<Job>(p2Jobs, shuffleSeed);
-
-                JobSequence generatedSequence = new JobSequence(p1Jobs, p2Jobs);
-
-                //bool sequenceValid = false;
-
-                int retries = 0;
-                */
-                /*
-                while (true)
-                {
-                    var requirementTest = RequirementsMet(generatedSequence);
-                    if (requirementTest.Item1)
-                    {
-                        //sequenceValid = true;
-                        break;
-                    }
-                */
-                /*
-                if(requirementTest.Item1 == false)
-                {
-                    return 0.0;
-                }
-                */
-
-                //Requirement unfulfiledRequirement = (Requirement)requirementTest.Item2!;
-
-                // adjust job with requirement, move job higher (in order to pass required job)
-                /*
-                if (generatedSequence.P1Jobs.Any(j => j.Id == unfulfiledRequirement.JobId))
-                {
-                    // Job on P1
-                    // 
-
-                    sequenceCost += 5; // sequence needs adjusting, higher cost
-                }
-                else
-                {
-                    // Job on P2
-
-
-                    sequenceCost += 5;
-                }
-                */
-                /*
-                retries++;
-
-                if (retries > 1000)
-                {
-                    return 0;
-                }
-
-            }
-
-            sequenceCost += scheduler.RunJobs(generatedSequence);
-            fitnessValue = 15.0 / sequenceCost;
-                */
-                #endregion
-
-
                 var result = ChromosomeToSequence(chromosome);
                 if (result.Item1 == false)
                 {
@@ -319,7 +102,6 @@ namespace GA_SI
 
                 var sequenceCost = scheduler.RunJobs(result.Item2!) + result.Item3;
                 fitnessValue = 15.0 / sequenceCost;
-
             }
             else
             {
@@ -399,7 +181,7 @@ namespace GA_SI
             while (true)
             {
                 var requirementTest = RequirementsMet(generatedSequence);
-                if (requirementTest.Item1)
+                if (requirementTest)
                 {
                     break;
                 }
@@ -421,9 +203,6 @@ namespace GA_SI
 
         private static void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
-
-
-            //get the best solution 
             var chromosome = e.Population.GetTop(1)[0];
             if (lastFitnessChange.Item2 < chromosome.Fitness)
             {
@@ -432,12 +211,10 @@ namespace GA_SI
                 Console.WriteLine($"Generation: {e.Generation} | Fitness: {chromosome.Fitness}");
             }
 
-            //Console.WriteLine($"Generation: {e.Generation} | Fitness: {e.Population.MaximumFitness}");
             if (e.Generation == maxGenerations)
             {
                 JobScheduler drawingScheduler = new JobScheduler(requirements, true);
                 drawingScheduler.RunJobs(ChromosomeToSequence(chromosome).Item2!);
-                //Console.WriteLine($"Najlepsze rozwiązanie: {ChromosomeToSequence(chromosome)}");
             }
 
         }
@@ -456,25 +233,7 @@ namespace GA_SI
             }
         }
 
-        public static void Move<T>(List<T> list, T item, int newIndex)
-        {
-            if (item != null)
-            {
-                var oldIndex = list.IndexOf(item);
-                if (oldIndex > -1)
-                {
-                    list.RemoveAt(oldIndex);
-
-                    if (newIndex > oldIndex) newIndex--;
-                    // the actual index could have shifted due to the removal
-
-                    list.Insert(newIndex, item);
-                }
-            }
-
-        }
-
-        static private (bool, Requirement?) RequirementsMet(JobSequence sequence)
+        static private bool RequirementsMet(JobSequence sequence)
         {
             foreach (var requirement in requirements)
             {
@@ -482,28 +241,7 @@ namespace GA_SI
                 int requirementIndex = sequence.GetJobIndex(requirement.RequiresId);
                 if (jobIndex < requirementIndex)
                 {
-                    return (false, requirement);
-                }
-            }
-
-            return (true, null);
-        }
-
-        static private bool AllTasksDone(JobSequence sequence)
-        {
-            for (int i = 1; i <= CostManager.JobCount; i++)
-            {
-                bool doneOnP1 = sequence.P1Jobs.Any(j => j.Id == i);
-                bool doneOnP2 = sequence.P2Jobs.Any(j => j.Id == i);
-
-                if (!doneOnP1 && !doneOnP2)
-                {
                     return false;
-                }
-
-                if (doneOnP1 && doneOnP2)
-                {
-                    throw new ApplicationException("Error, generated invalid sequence");
                 }
             }
 

@@ -6,6 +6,31 @@
         private readonly IList<Requirement> _requirements;
         private readonly bool _draw;
 
+        /*
+             Włączenie opcji draw, rysuje przebieg czasowy wykonywanych na procesorze zadań,
+             Przykładowy przebieg: 
+             TIM  P1   P2
+             1    1    2
+             2    1    W
+             3    7    3
+             4    7    3
+             5    7    3
+             6    7    6
+             7    7    6
+             8    7    6
+             9    5    6
+             10   5    6
+             11   5    6
+             12   5    6
+             13   5    4
+             14   5    4
+             15   5    4
+             16   4 
+             
+             TIM - jednostka czasu
+             P1/P2 - zadanie które wykonuje się na danym procesorze
+             W - oznacza oczekiwanie, procesor oczekuje na spełnienie warunku potrzebnego do wykonania zadania
+         */
         public JobScheduler(IList<Requirement> requirements, bool draw = false)
         {
             _requirements = requirements;
@@ -34,7 +59,6 @@
                 }
                 DoUnitOfWork(ref sequence, ref finishedJobs);
 
-
                 // Wykrywanie zakleszczeń
                 if (sequenceCost > _maxCost)
                 {
@@ -51,7 +75,7 @@
 
         /*
          * Funkcja "przydzielająca" jednostkę czasu procesora zadaniom,
-         * jeżeli nie są spełnione wymagania, zadanie aktywnie oczekuje.
+         * jeżeli nie są spełnione wymagania, zadanie oczekuje.
          */
         private void DoUnitOfWork(ref JobSequence pendingSequence, ref List<Job> finishedJobs)
         {
@@ -136,7 +160,9 @@
 
         private void HandleDeadlock()
         {
-            Console.WriteLine("TODO: Zakleszczenie");
+            // W celach testowych - funkcja nigdy się nie wykona podczas normalnego działania programu,
+            // do procesora zawsze przekazywana jest "prawidłowa" sekwencja, w której nie wystąpi zakleszczenie
+            Console.WriteLine("DEBUG: Zakleszczenie");
             while (true)
             {
             }

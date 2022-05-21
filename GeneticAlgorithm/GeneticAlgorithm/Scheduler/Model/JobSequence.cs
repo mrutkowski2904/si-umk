@@ -27,7 +27,6 @@
                 p1Copy.Add(new Job()
                 {
                     Id = job.Id,
-                    //ProcessorId = job.ProcessorId,
                     Cost = job.Cost
                 });
             }
@@ -37,7 +36,6 @@
                 p2Copy.Add(new Job()
                 {
                     Id = job.Id,
-                    // ProcessorId = job.ProcessorId,
                     Cost = job.Cost
                 });
             }
