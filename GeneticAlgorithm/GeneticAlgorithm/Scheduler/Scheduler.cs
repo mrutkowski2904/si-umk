@@ -9,23 +9,22 @@
         /*
              Włączenie opcji draw, rysuje przebieg czasowy wykonywanych na procesorze zadań,
              Przykładowy przebieg: 
-             TIM  P1   P2
-             1    1    2
-             2    1    W
-             3    7    3
-             4    7    3
-             5    7    3
-             6    7    6
-             7    7    6
-             8    7    6
-             9    5    6
-             10   5    6
-             11   5    6
-             12   5    6
-             13   5    4
-             14   5    4
-             15   5    4
-             16   4 
+                TIM  P1   P2
+                1    1    2
+                2    1    W
+                3    4    3
+                4    4    3
+                5    4    3
+                6    4    6
+                7    4    6
+                8    4    6
+                9    5    6
+                10   5    6
+                11   5    6
+                12   5    6
+                13   5    7
+                14   5    7
+                15   5    7
              
              TIM - jednostka czasu
              P1/P2 - zadanie które wykonuje się na danym procesorze

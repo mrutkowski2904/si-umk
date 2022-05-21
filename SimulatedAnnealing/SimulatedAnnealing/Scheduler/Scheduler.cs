@@ -136,7 +136,9 @@
 
         private void HandleDeadlock()
         {
-            Console.WriteLine("TODO: Zakleszczenie");
+            // W celach testowych - funkcja nigdy się nie wykona podczas normalnego działania programu,
+            // do procesora zawsze przekazywana jest "prawidłowa" sekwencja, w której nie wystąpi zakleszczenie
+            Console.WriteLine("DEBUG: Zakleszczenie");
             while (true)
             {
             }

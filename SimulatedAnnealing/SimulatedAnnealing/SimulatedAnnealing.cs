@@ -41,6 +41,8 @@ namespace SA
 
             while (T > 0)
             {
+                newX = GetNeighbour();
+
                 if (GetValue(currentX) < GetValue(minX))
                 {
                     minX = currentX;
@@ -50,8 +52,10 @@ namespace SA
                     }
                 }
 
-                newX = GetNeighbour();
-                if (Math.Exp((GetValue(currentX) - GetValue(newX)) / T) > RandomDouble(0, 1))
+                /*
+                 * Wraz ze spadkiem temperatury będzie malała szansa na zaakceptowanie mniej optymalnego parametru x
+                 */
+                else if (Math.Exp((GetValue(currentX) - GetValue(newX)) / T) > RandomDouble(0, 1))
                 {
                     currentX = newX;
                 }
@@ -66,7 +70,7 @@ namespace SA
 
         private int GetNeighbour()
         {
-            return _random.Next(9000);
+            return _random.Next(1500);
         }
 
         private int GetValue(int x)

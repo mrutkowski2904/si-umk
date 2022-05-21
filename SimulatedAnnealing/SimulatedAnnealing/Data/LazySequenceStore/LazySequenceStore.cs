@@ -18,7 +18,7 @@ namespace SimulatedAnnealing.SimulatedAnnealing.Data.LazyStore
         /*
          * Funkcja generuje prawidłową sekwencję zadań podczas odczytu,
          * jeżeli wcześniej doszło do wygenerowania sekwencji dla podanego indeksu, 
-         * zwraca wcześniej wygenerowaną wartość
+         * zwraca wcześniej wygenerowaną wartość.
          */
         public JobSequence GetSequence(int index)
         {
@@ -108,8 +108,6 @@ namespace SimulatedAnnealing.SimulatedAnnealing.Data.LazyStore
                         p1CandCopy.Remove(p1CandCopy.FirstOrDefault(c => c.Item1 == jobData.Item1));
                     }
 
-
-
                     // --------- Procesor 2 ---------
                     var p2ContainsJob = p2CandCopy.Any(c => c.Item1 == jobId);
                     if (processor == 2 && p2ContainsJob)
@@ -143,13 +141,11 @@ namespace SimulatedAnnealing.SimulatedAnnealing.Data.LazyStore
                     #endregion
                 }
 
-                //if (AllTasksDone(sequence) && RequirementsMet && sequence is new(doesnt exist) )
                 if (AllTasksDone(sequence) && RequirementsMet(sequence) && IsUnique(sequence))
                 {
                     return sequence;
                 }
             }
-
         }
 
         private bool RequirementsMet(JobSequence sequence)
@@ -163,7 +159,6 @@ namespace SimulatedAnnealing.SimulatedAnnealing.Data.LazyStore
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -226,7 +221,5 @@ namespace SimulatedAnnealing.SimulatedAnnealing.Data.LazyStore
 
             return true;
         }
-
-
     }
 }
