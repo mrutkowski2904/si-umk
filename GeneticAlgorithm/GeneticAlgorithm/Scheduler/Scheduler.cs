@@ -7,7 +7,7 @@
         private readonly bool _draw;
 
         /*
-             Włączenie opcji draw, rysuje przebieg czasowy wykonywanych na procesorze zadań,
+             Włączona opcja draw rysuje przebieg czasowy wykonywanych na procesorze zadań,
              Przykładowy przebieg: 
                 TIM  P1   P2
                 1    1    2
@@ -26,7 +26,7 @@
                 14   5    7
                 15   5    7
              
-             TIM - jednostka czasu
+             TIM - czas
              P1/P2 - zadanie które wykonuje się na danym procesorze
              W - oznacza oczekiwanie, procesor oczekuje na spełnienie warunku potrzebnego do wykonania zadania
          */

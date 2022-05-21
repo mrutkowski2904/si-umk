@@ -26,7 +26,7 @@ x64/
 x86/
 build/
 bld/
-bin/
+bin
 [Bb]in/
 [Oo]bj/
 [Oo]ut/
@@ -36,3 +36,6 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+*.exe
+*.dll

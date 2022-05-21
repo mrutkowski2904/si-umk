@@ -6,6 +6,30 @@
         private readonly IList<Requirement> _requirements;
         private readonly bool _draw;
 
+        /*
+             Włączona opcja draw rysuje przebieg czasowy wykonywanych na procesorze zadań,
+             Przykładowy przebieg: 
+                TIM  P1   P2
+                1    1    2
+                2    1    W
+                3    4    3
+                4    4    3
+                5    4    3
+                6    4    6
+                7    4    6
+                8    4    6
+                9    5    6
+                10   5    6
+                11   5    6
+                12   5    6
+                13   5    7
+                14   5    7
+                15   5    7
+             
+             TIM - czas
+             P1/P2 - zadanie które wykonuje się na danym procesorze
+             W - oznacza oczekiwanie, procesor oczekuje na spełnienie warunku potrzebnego do wykonania zadania
+         */
         public JobScheduler(IList<Requirement> requirements, bool draw = false)
         {
             _requirements = requirements;
